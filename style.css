@@ -1,0 +1,260 @@
+*{margin:0;padding:0;box-sizing:border-box} 
+
+html,body{ 
+  width:100%; 
+  height:100%; 
+  font-family:'Poppins',sans-serif; 
+  background:radial-gradient(circle at top,#24243a,#1b1b2f,#0f0f1a); 
+  color:#fff; 
+  overflow:hidden; 
+} 
+
+.page{ 
+  position:fixed; 
+  inset:0; 
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  align-items:center; 
+  gap:28px; 
+  padding:40px; 
+  opacity:0; 
+  pointer-events:none; 
+  transform:translateY(20px); 
+  transition:.6s; 
+} 
+
+.page.active{ 
+  opacity:1; 
+  pointer-events:auto; 
+  transform:none; 
+} 
+
+.scroll-page{ 
+  overflow-y:auto; 
+  justify-content:flex-start; 
+} 
+
+h1{ 
+  font-family:'Anton',sans-serif; 
+  font-size:3rem; 
+} 
+
+.glow-text{ 
+  text-shadow:0 0 30px rgba(255,120,180,.6); 
+} 
+
+.countdown span{ 
+  font-size:2.2rem; 
+} 
+
+/* CAKE */ 
+.cake-wrapper{ 
+  position:relative; 
+  cursor:pointer; 
+} 
+
+.cake-img{ 
+  width:320px; 
+  z-index:2; 
+  position:relative; 
+} 
+
+.cake-glow{ 
+  position:absolute; 
+  inset:-90px; 
+  background:radial-gradient(circle,rgba(255,120,180,.6),transparent); 
+  filter:blur(60px); 
+  animation:pulse 2.5s infinite; 
+} 
+
+@keyframes pulse{50%{opacity:1}} 
+
+/* MEMORY */ 
+.memory-container{ 
+  width:100%; 
+  height:320px; 
+  overflow:hidden; 
+  margin-top:40px; 
+} 
+
+.memory-track{ 
+  display:flex; 
+  gap:24px; 
+  width:max-content; 
+  animation:scroll 80s linear infinite; 
+} 
+
+@keyframes scroll{ 
+  from{transform:translateX(0)} 
+  to{transform:translateX(-50%)} 
+} 
+
+.memory,.img-slot{ 
+  width:220px; 
+  height:300px; 
+  border-radius:22px; 
+  background:rgba(255,255,255,.25); 
+  backdrop-filter:blur(18px); 
+  cursor:pointer; 
+  background-size:cover; 
+  background-position:center; 
+} 
+
+/* DATES */ 
+.dates-row{ 
+  display:grid; 
+  grid-template-columns:repeat(2,220px); 
+  gap:40px; 
+  margin-top:120px; 
+  justify-content:center; 
+} 
+
+.date-card{ 
+  display:flex; 
+  flex-direction:column; 
+  gap:12px; 
+} 
+
+/* QUIZ */ 
+.quiz-images{ 
+  display:flex; 
+  gap:24px; 
+  min-height:220px; 
+} 
+
+.options{ 
+  display:flex; 
+  gap:20px; 
+} 
+
+button{ 
+  padding:14px 28px; 
+  border:none; 
+  border-radius:999px; 
+  background:rgba(255,255,255,.14); 
+  color:#fff; 
+  cursor:pointer; 
+} 
+
+/* LETTER */ 
+.envelope{ 
+  width:300px; 
+  height:180px; 
+  display:flex; 
+  justify-content:center; 
+  align-items:center; 
+  font-size:3rem; 
+  background:rgba(255,255,255,.15); 
+  border-radius:24px; 
+  cursor:pointer; 
+} 
+
+.letter{ 
+  max-width:700px; 
+  max-height:60vh; 
+  overflow:auto; 
+  display:none; 
+  background:rgba(255,255,255,.12); 
+  padding:30px; 
+  border-radius:24px; 
+} 
+
+.letter.open{display:block} 
+
+.nav{ 
+  position:fixed; 
+  bottom:28px; 
+  left:0; 
+  right:0; 
+  display:flex; 
+  justify-content:space-between; 
+  padding:0 36px; 
+} 
+
+/* ================= MEMORY LANE VISIBILITY FIX ================= */ 
+
+#page-2{ 
+  justify-content:flex-start !important; 
+  align-items:stretch !important; 
+  overflow-y:auto !important; 
+} 
+
+.memory-container{ 
+  width:100%; 
+  height:340px; 
+  min-height:340px; 
+  margin-top:40px; 
+  overflow:hidden; 
+} 
+
+.memory-track{ 
+  display:flex; 
+  gap:24px; 
+  width:max-content; 
+  animation:scroll 70s linear infinite; 
+} 
+
+.memory{ 
+  width:220px; 
+  height:300px; 
+  flex-shrink:0; 
+  border-radius:22px; 
+  background:rgba(255,255,255,.25); 
+} 
+
+.dates-row{ 
+  margin-top:140px; 
+} 
+
+/* ================= FIX DATES SECTION ================= */
+
+.dates-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 60px auto 80px auto;
+}
+
+.date-card {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.date-card .img-slot {
+  width: 100%;
+  height: 240px;
+  border-radius: 20px;
+}
+
+.date-card p {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+/* ================= FIX QUIZ (FINAL & CORRECT) ================= */
+
+/* Hide quiz by default */
+#page-3 .quiz-images,
+#page-3 .options,
+#page-3 #quiz-result {
+  display: none;
+}
+
+/* Show ONLY when quiz page is active */
+#page-3.active .quiz-images,
+#page-3.active .options,
+#page-3.active #quiz-result {
+  display: flex;
+}
+
+/* Stack quiz correctly */
+#page-3.active {
+  justify-content: center;
+}
